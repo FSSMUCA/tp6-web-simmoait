@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice Web Avancée & Info PHP (TP 6)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mini-Application Web</h1>
+        <p>Calculatrice locale et introduction à PHP.</p>
+    </header>
+
+    <main class="container">
+        <section id="calculatrice">
+            <h2>Calculatrice Locale</h2>
+            <form id="calculator-form">
+                <div class="input-group">
+                    <label for="nombreA">Nombre A :</label>
+                    <input type="number" id="nombreA" name="nombreA" required step="any">
+                </div>
+                <div class="input-group">
+                    <label for="operation">Opération :</label>
+                    <select id="operation" name="operation" required>
+                        <option value="plus">+</option>
+                        <option value="moins">-</option>
+                        <option value="multiplier">×</option>
+                        <option value="diviser">÷</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="nombreB">Nombre B :</label>
+                    <input type="number" id="nombreB" name="nombreB" required step="any">
+                </div>
+                
+                <div id="error-message" class="error-zone"></div>
+                
+                <button type="submit" id="calculer-btn">Calculer</button>
+            </form>
+            <div id="resultat" class="result-display"></div>
+        </section>
+
+        <aside id="historique-section" class="card">
+            <h2>Historique des Opérations</h2>
+            <ul id="historique-list">
+                </ul>
+        </aside>
+
+        <section id="php-intro">
+            <h2>Introduction au PHP</h2>
+            <p>
+                Voir les variables simples affichées dans une page PHP séparée : 
+                <a href="info.php" target="_blank">Accéder à info.php</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Mini-Application Web - TP 6</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
