@@ -1,0 +1,184 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #343a40;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Structure sémantique et Flexbox/Grid */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+    display: grid;
+    /* Grid pour la mise en page principale */
+    grid-template-areas:
+        "calc hist"
+        "php php";
+    grid-template-columns: 2fr 1fr; /* 2/3 pour la calculatrice, 1/3 pour l'historique */
+    gap: 30px;
+}
+
+#calculatrice { grid-area: calc; }
+#historique-section { grid-area: hist; }
+#php-intro { grid-area: php; }
+
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 30px;
+}
+
+/* Formulaire et inputs */
+#calculator-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    flex: 1 1 30%; /* Flexbox pour les groupes d'inputs */
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="number"], select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Bouton avec effets */
+#calculer-btn {
+    flex: 1 1 100%;
+    padding: 12px 20px;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#calculer-btn:hover {
+    background-color: #1e7e34;
+    transform: translateY(-2px);
+}
+
+#calculer-btn:active {
+    transform: translateY(0);
+}
+
+/* Zone d'erreur */
+.error-zone {
+    flex: 1 1 100%;
+    color: var(--danger-color);
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid var(--danger-color);
+    background-color: #f8d7da;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: none; /* Caché par défaut, visible par JS */
+}
+
+.result-display {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 15px;
+    background-color: #e2f0fb;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Card visuelle pour l'historique */
+.card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#historique-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#historique-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+}
+
+#historique-list li:last-child {
+    border-bottom: none;
+}
+
+#historique-list li:hover {
+    background-color: #f4f4f4;
+    padding-left: 5px;
+}
+
+/* Design Responsive */
+@media (max-width: 768px) {
+    .container {
+        /* Changement pour une colonne unique sur mobile */
+        grid-template-areas:
+            "calc"
+            "hist"
+            "php";
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #calculator-form {
+        flex-direction: column; /* Empilement des inputs */
+    }
+
+    .input-group {
+        flex: 1 1 100%;
+    }
+
+    #calculer-btn {
+        margin-top: 10px;
+    }
+}
